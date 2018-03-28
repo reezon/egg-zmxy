@@ -23,12 +23,16 @@
 <!--
 Description here.
 -->
+egg plugin for [zmxy](https://github.com/bmqb/zmxy)
 
 ## Install
 
 ```bash
 $ npm i egg-zmxy --save
 ```
+
+## Dependencies
+- [zmxy](https://github.com/bmqb/zmxy)
 
 ## Usage
 
@@ -45,6 +49,9 @@ exports.zmxy = {
 ```js
 // {app_root}/config/config.default.js
 exports.zmxy = {
+  appId: '',
+  appPrivateKeyPath: '',
+  zmxyPublicKeyPath: ''
 };
 ```
 
@@ -52,7 +59,16 @@ see [config/config.default.js](config/config.default.js) for more detail.
 
 ## Example
 
-<!-- example here -->
+```js
+await this.app.zmxy.verifyIvs({
+  name: '张三',
+  cert_no: '532926200804058748'
+}).then(({ result }) => {
+  console.log(result)
+}).catch((err) => {
+  console.error(err)
+})
+```
 
 ## Questions & Suggestions
 
